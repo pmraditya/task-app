@@ -112,7 +112,7 @@ router.patch('/user/me',auth,async(req,res)=>{
     const check = givenUpdates.every((update)=>allowedUpdates.includes(update))
     if(!check)
     {
-        res.status(500).send()
+        return res.status(500).send()
     }
     try{
         // Making save request instead of findByIdAndUpdate
@@ -195,7 +195,7 @@ router.delete('/user/me',auth,async(req,res)=>{
 
         await req.user.remove()
         deleteMessage(req.user.email,req.user.name)
-        res.send(req.user)
+        res.send({user:req.user})
     }
     catch(e){
         res.status(400).send()

@@ -23,7 +23,7 @@ try {
     next()
 
 } catch (error) {
-    res.status(400).send({error:'something get wrong'})
+    res.status(401).send({error:'something get wrong'})
 }
 
 
